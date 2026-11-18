@@ -1,0 +1,232 @@
+:root {
+  --bg: #14111f;
+  --bg-soft: #1d1930;
+  --mint: #7ee8c0;
+  --mint-dark: #2f9e77;
+  --lavender: #b9a2f5;
+  --lavender-strong: #8a68e6;
+  --text: #f2eefc;
+  --text-soft: #b4aed0;
+  --red: #e50914;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 10% -10%, #2a2150 0%, transparent 60%), var(--bg);
+  background-attachment: fixed;
+}
+
+#root {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding: 24px 4% 64px;
+  text-align: left;
+}
+
+/* Page title (first heading) works like the logo bar */
+.container h1:first-child {
+  margin: 0 0 20px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: var(--red);
+}
+
+/* Row titles */
+.container h1 {
+  margin: 36px 0 4px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--red);
+}
+
+/* Search */
+.search-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 11px 20px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid rgba(185, 162, 245, 0.35);
+  border-radius: 999px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-box::placeholder {
+  color: var(--text-soft);
+}
+
+.search-box:focus {
+  border-color: var(--mint);
+  box-shadow: 0 0 0 4px rgba(126, 232, 192, 0.18);
+}
+
+/* Horizontal scrolling row */
+.movie-container {
+  display: flex;
+  gap: 14px;
+  padding: 24px 4px 28px;
+  min-height: 120px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lavender-strong) transparent;
+}
+
+.movie-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movie-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.movie-container::-webkit-scrollbar-thumb {
+  background: rgba(138, 104, 230, 0.55);
+  border-radius: 999px;
+}
+
+/* Card */
+.movie-card {
+  position: relative;
+  flex: 0 0 200px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-radius: 10px;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.movie-card:hover,
+.movie-card:focus-within {
+  z-index: 5;
+  transform: scale(1.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7), 0 0 0 2px var(--lavender-strong);
+}
+
+.movie-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: var(--bg-soft);
+}
+
+/* Details slide up over the poster on hover */
+.movie-details {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 12px 12px;
+  background: linear-gradient(to top, rgba(20, 17, 31, 0.98) 55%, rgba(20, 17, 31, 0));
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.movie-card:hover .movie-details,
+.movie-card:focus-within .movie-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.movie-details h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.movie-details p {
+  margin: 0 0 2px;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
+.movie-details p:last-of-type {
+  margin-bottom: 10px;
+}
+
+/* Button */
+.movie-details button {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #14111f;
+  background: var(--mint);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.movie-details button:hover:not(:disabled) {
+  background: #a6f3d6;
+}
+
+.movie-details button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.movie-details button:focus-visible {
+  outline: 3px solid var(--lavender);
+  outline-offset: 2px;
+}
+
+.movie-details button:disabled {
+  color: var(--text-soft);
+  background: rgba(185, 162, 245, 0.18);
+  cursor: not-allowed;
+}
+
+/* Touch screens have no hover, so keep details visible */
+@media (hover: none) {
+  .movie-details {
+    opacity: 1;
+    transform: none;
+  }
+
+  .movie-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 16px 48px;
+  }
+
+  .movie-card {
+    flex-basis: 150px;
+  }
+
+  .container h1:first-child {
+    font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
