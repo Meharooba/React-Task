@@ -1,0 +1,35 @@
+
+body {
+    background-color: #eef5ff;
+    font-family: Arial, sans-serif;
+}
+
+#root {
+    text-align: center;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 20px;
+}
+
+#root > div {
+    background-color: white;
+    width: 280px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #cbdcf5;
+}
+
+h3 {
+    color: #24558a;
+}
+
+p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+h1{
+    color: #24558a;
+}
