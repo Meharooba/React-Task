@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #080c14;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  background: #101722;
+  border-radius: 18px;
+  border: 1px solid #263447;
+  box-shadow: 0 0 35px rgba(0, 136, 255, 0.08);
+}
+
+h1 {
+  text-align: center;
+  color: #eaf4ff;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.container h1::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  background: #00a6ff;
+  border-radius: 5px;
+  margin: 15px auto 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 15px 16px;
+  background: #0b111b;
+  color: #e2e8f0;
+  border: 1px solid #263447;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+select {
+  color: #94a3b8;
+}
+
+input:focus,
+select:focus {
+  border-color: #00a6ff;
+  box-shadow: 0 0 12px rgba(0, 166, 255, 0.12);
+  background: #0e1724;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 10px;
+  background: #008cff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #00b4ff;
+  box-shadow: 0 0 20px rgba(0, 166, 255, 0.25);
+}
+
+.student-details {
+  margin-top: 30px;
+  padding: 22px;
+  background: #0b111b;
+  border-radius: 12px;
+  border: 1px solid #1e3a56;
+}
+
+.student-details h2 {
+  color: #00a6ff;
+  font-size: 21px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.student-details p {
+  color: #cbd5e1;
+  padding: 10px 0;
+  margin: 0;
+  border-bottom: 1px solid #1e293b;
+  word-break: break-word;
+}
+
+.student-details p:last-child {
+  border-bottom: none;
+}
+
+.student-details strong {
+  color: #7dd3fc;
+}
